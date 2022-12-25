@@ -1,16 +1,16 @@
-const form = document.getElementById('login-form');
-const errorMessage = document.getElementById('error-message');
+document.getElementById("login-form").onsubmit = function(event) {
+  event.preventDefault();
 
-form.addEventListener('submit', (e) => {
-  e.preventDefault();
+  // Get the entered username and password
+  var username = document.getElementById("username").value;
+  var password = document.getElementById("password").value;
 
-  const email = document.getElementById('email').value;
-  const password = document.getElementById('password').value;
-
-  if (!email || !password) {
-    errorMessage.textContent = 'Please enter a valid email and password';
-    return;
+  // Validate the username and password
+  if (username === "admin" && password === "12345") {
+    // If the username and password are correct, redirect to the dashboard page
+    window.location.href = "dashboard.html";
+  } else {
+    // If the username and password are invalid, display an error message
+    document.getElementById("error-message").innerHTML = "Invalid username or password.";
   }
-
-  // Send login request to server and handle response
-});
+};
